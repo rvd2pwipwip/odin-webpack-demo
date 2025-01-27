@@ -8,4 +8,4 @@ https://www.theodinproject.com/lessons/node-path-javascript-webpack
 npm install --save-dev webpack webpack-cli
 ```
 
-checking formatting
+The `--save-dev` flag tells npm to record our two packages as development dependencies (package.json).
