@@ -6,5 +6,6 @@ https://www.theodinproject.com/lessons/node-path-javascript-webpack
 
 ```
 npm install --save-dev webpack webpack-cli
+```
 
 checking formatting
