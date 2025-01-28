@@ -73,6 +73,14 @@ module.exports = {
   ],
 };
 ```
-The `template` option creates an index.html file in the `dist` directory.
-Webpack automatically injects the appropriate deferred script.
-Any changes to HTML generate fresh dist code with a Webpack rerun.
+- The `template` option creates an index.html file in the `dist` directory.
+- Webpack automatically injects the appropriate deferred script in the html.
+- Any changes to HTML generate fresh dist code with a Webpack rerun.
+
+## Loading CSS
+Two packages are needed to handle CSS:
+```
+npm install --save-dev style-loader css-loader
+```
+- `css-loader` will read any CSS files we import in a JavaScript file and store the result in a string.
+- `style-loader` then takes that string and actually adds the JavaScript code that will apply those styles to the page.
