@@ -2,7 +2,7 @@
 odin class at 
 https://www.theodinproject.com/lessons/node-path-javascript-webpack
 
-#Install Webpack
+## Install Webpack
 
 1. Once inside the new project directory, install Webpack, which involves two packages.
 
@@ -37,3 +37,9 @@ module.exports = {
 - `filename:` The name of the output bundle - can be anything.
 - `path:` The path to the output directory, in this case, dist (automatically created).
 - `clean:` Set to true, empty the output directory first before bundling the files each time we run Webpack to bundle.
+
+## Handling HTML
+Run the following command to install HtmlWebpackPlugin (also as a dev dependency):
+```
+npm install --save-dev html-webpack-plugin
+```
