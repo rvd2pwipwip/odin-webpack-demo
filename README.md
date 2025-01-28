@@ -45,9 +45,31 @@ npx webpack
 Run main.js with `node dist/main.js` to view greeting logged in the terminal.
 
 ## Handling HTML
-Run the following command in the terminal to install HtmlWebpackPlugin (also as a dev dependency):
+1. Run the following command in the terminal to install HtmlWebpackPlugin (also as a dev dependency):
 ```
 npm install --save-dev html-webpack-plugin
 ```
 ⚠️ **We do not need to put a script tag in the index.html file!**
+
 HtmlWebpackPlugin will automatically add our output bundle as a script tag. 
+
+2. Update webpack.config.js to handle HTML:
+```
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  mode: "development",
+  entry: "./src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/template.html",
+    }),
+  ],
+};
+```
