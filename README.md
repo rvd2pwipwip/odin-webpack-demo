@@ -49,7 +49,7 @@ Run main.js with `node dist/main.js` to view greeting logged in the terminal.
 ```
 npm install --save-dev html-webpack-plugin
 ```
-⚠️ **We do not need to put a script tag in the index.html file!**
+⚠️ **Don't put a script tag in the index.html file!**
 
 HtmlWebpackPlugin will automatically add our output bundle as a script tag. 
 
@@ -60,7 +60,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/script.js",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
@@ -68,8 +68,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: "./src/index.html",
     }),
   ],
 };
 ```
+The `template` option creates an index.html file in the `dist` directory.
+Webpack automatically injects the appropriate deferred script.
+Any changes to HTML generate fresh dist code with a Webpack rerun.
