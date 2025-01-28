@@ -38,7 +38,8 @@ module.exports = {
 - `path:` The path to the output directory, in this case, dist (automatically created).
 - `clean:` Set to true, empty the output directory first before bundling the files each time we run Webpack to bundle.
 
-4. Run Webpack: `npx webpack`
+4. Run Webpack: 
+   ```npx webpack```
 
 ## Handling HTML
 Run the following command to install HtmlWebpackPlugin (also as a dev dependency):
