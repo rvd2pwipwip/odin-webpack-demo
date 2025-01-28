@@ -42,9 +42,12 @@ module.exports = {
 ```
 npx webpack
 ```
+Run main.js with `node dist/main.js` to view greeting logged in the terminal.
 
 ## Handling HTML
-Run the following command to install HtmlWebpackPlugin (also as a dev dependency):
+Run the following command in the terminal to install HtmlWebpackPlugin (also as a dev dependency):
 ```
 npm install --save-dev html-webpack-plugin
 ```
+⚠️ **We do not need to put a script tag in the index.html file!**
+HtmlWebpackPlugin will automatically add our output bundle as a script tag. 
