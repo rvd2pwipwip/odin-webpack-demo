@@ -117,6 +117,7 @@ module.exports = {
 You can now import your CSS file into one of your JavaScript files. `src/script.js` makes sense. We don’t need anything from the imported CSS file itself. Since our CSS and style loaders will handle all of that for us, we can just use a side effect import.
 
 ```
+// script.js
 import "./styles.css";
 import { greeting } from "./greeting.js";
 
@@ -124,3 +125,9 @@ console.log(greeting);
 ```
 ⚠️ **Don't put a link tag to the css in the index.html file!**
 Work with multiple smaller CSS files that are imported in the modules they’re needed.
+
+## Loading images
+1. **Image files used in our CSS inside** `url()`
+`css-loader` already handles this so there’s nothing extra to do for image paths in CSS.
+2. **Image files we reference in our HTML template, e.g. as the** `src` **of an** `<img>`
+Install `html-loader`, which will detect image file paths in the HTML template and load the right image files. Without this, ./odin.png would just be a bit of text that no longer references the correct file.
