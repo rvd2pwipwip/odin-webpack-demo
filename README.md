@@ -55,6 +55,7 @@ HtmlWebpackPlugin will automatically add our output bundle as a script tag.
 
 2. Update webpack.config.js to handle HTML:
 ```
+// webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -78,9 +79,38 @@ module.exports = {
 - Any changes to HTML generate fresh dist code with a Webpack rerun.
 
 ## Loading CSS
-Two packages are needed to handle CSS:
+1. Two packages are needed to handle CSS:
 ```
 npm install --save-dev style-loader css-loader
 ```
-- `css-loader` will read any CSS files we import in a JavaScript file and store the result in a string.
+- `css-loader` will read any CSS files imported in a JavaScript file and store the result in a string.
 - `style-loader` then takes that string and actually adds the JavaScript code that will apply those styles to the page.
+1. In `webpack.config.js`, add these loaders so Webpack knows what to do. Since these aren’t plugins, they go in a separate section:
+```
+// webpack.config.js
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  mode: "development",
+  entry: "./src/script.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
+```
