@@ -130,6 +130,7 @@ Work with multiple smaller CSS files that are imported in the modules they’re 
 1. **Image files used in our CSS inside** `url()`
 
 `css-loader` already handles this so there’s nothing extra to do for image paths in CSS.
+
 2. **Image files we reference in our HTML template, e.g. as the** `src` **of an** `<img>`
 
 Install `html-loader`, which will detect image file paths in the HTML template and load the right image files. Without this, ./odin.png would just be a bit of text that no longer references the correct file.
