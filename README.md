@@ -153,3 +153,12 @@ Since images aren’t JavaScript, we need to tell Webpack that these files will 
   type: "asset/resource",
 }
 ```
+Then, import the image in whatever JavaScript module where the image is used.
+```
+import imageTest from "./imageTest.png";
+   
+const image = document.createElement("img");
+image.src = imageTest;
+   
+document.body.appendChild(image);
+```
