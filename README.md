@@ -131,6 +131,25 @@ Work with multiple smaller CSS files that are imported in the modules they’re 
 
 `css-loader` already handles this so there’s nothing extra to do for image paths in CSS.
 
-2. **Image files we reference in our HTML template, e.g. as the** `src` **of an** `<img>`
+2. **Image files referenced in the HTML template, e.g. as the** `src` **of an** `<img>`
 
-Install `html-loader`, which will detect image file paths in the HTML template and load the right image files. Without this, ./odin.png would just be a bit of text that no longer references the correct file.
+Install `html-loader`, which will detect image file paths in the HTML template and load the right image files. Without this, `./image.png` would just be a bit of text that no longer references the correct file.
+```
+npm install --save-dev html-loader
+```
+Then, add the following object to the `modules.rules` array within `webpack.config.js`:
+```
+{
+  test: /\.html$/i,
+  loader: "html-loader",
+}
+```
+3. **Images in JavaScript, where files need to be imported**
+
+Since images aren’t JavaScript, we need to tell Webpack that these files will be assets by adding an `asset/resource` rule. No need to install anything here. Just add the following object to the `modules.rules` array within `webpack.config.js`:
+```
+{
+  test: /\.(png|svg|jpg|jpeg|gif)$/i,
+  type: "asset/resource",
+}
+```
