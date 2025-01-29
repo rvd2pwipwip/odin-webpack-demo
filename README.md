@@ -85,7 +85,7 @@ npm install --save-dev style-loader css-loader
 ```
 - `css-loader` will read any CSS files imported in a JavaScript file and store the result in a string.
 - `style-loader` then takes that string and actually adds the JavaScript code that will apply those styles to the page.
-1. In `webpack.config.js`, add these loaders so Webpack knows what to do. Since these aren’t plugins, they go in a separate section:
+2. In `webpack.config.js`, add these loaders so Webpack knows what to do. Since these aren’t plugins, they go in a separate section:
 ```
 // webpack.config.js
 const path = require("path");
@@ -114,3 +114,13 @@ module.exports = {
   },
 };
 ```
+You can now import your CSS file into one of your JavaScript files. `src/script.js` makes sense. We don’t need anything from the imported CSS file itself. Since our CSS and style loaders will handle all of that for us, we can just use a side effect import.
+
+```
+import "./styles.css";
+import { greeting } from "./greeting.js";
+
+console.log(greeting);
+```
+⚠️ **Don't put a link tag to the css in the index.html file!**
+Work with multiple smaller CSS files that are imported in the modules they’re needed.
