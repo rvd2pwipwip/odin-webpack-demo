@@ -193,3 +193,4 @@ Once set up, `npx webpack` serve will host our web page on `http://localhost:808
 ```
 npx webpack serve
 ```
+> **Note:** If you change the webpack config file while the dev server is running, it will not reflect those config changes. Use `Ctrl + C` in the terminal to kill it then rerun `npx webpack serve` to apply the new config.
