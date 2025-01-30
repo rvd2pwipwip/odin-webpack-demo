@@ -169,7 +169,7 @@ npm install --save-dev webpack-dev-server
 ```
 It works by bundling your code behind the scenes (as if we ran npx webpack, but without saving the files to dist), and it does this every time you save a file that’s used in the bundle. 
 
-We can also use something called a source map so that any error messages reference files and lines from our development code and not the jumbled mess inside our single bundled .js file!
+We can also use something called a source map (`eval-source-map` as a `devtool` option) so that any error messages reference files and lines from our development code and not the jumbled mess inside our single bundled .js file!
 
 Once installed, in our `webpack.config.js`, we only need to add a couple more properties somewhere in the configuration object (the order of these properties does not matter):
 ```
@@ -182,8 +182,14 @@ Once installed, in our `webpack.config.js`, we only need to add a couple more pr
   },
   devtool: "eval-source-map",
   devServer: {
-    watchFiles: ["./src/template.html"],
+    watchFiles: ["./src/index.html"],
   },
   plugins: [
 ...
+```
+`webpack-dev-server` will only auto-restart when it detects any changes to files we import into our JavaScript bundle, so our HTML template will be ignored! All we need to do is add it to the dev server’s array of watched files.
+
+Once set up, `npx webpack` serve will host our web page on `http://localhost:8080/` with:
+```
+npx webpack serve
 ```
