@@ -194,3 +194,24 @@ Once set up, `npx webpack` serve will host our web page on `http://localhost:808
 npx webpack serve
 ```
 > **Note:** If you change the webpack config file while the dev server is running, it will not reflect those config changes. Use `Ctrl + C` in the terminal to kill it then rerun `npx webpack serve` to apply the new config.
+
+## GitHub Pages Deployment
+Push the contents of `dist` to its own branch on GitHub, which will then have a root-level `index.html` for GitHub pages to serve.
+1. Make a new branch to deploy from with
+```
+git branch gh-pages
+```
+2. Make sure all work has been committed (`git status`).
+3. Run 
+```
+git checkout gh-pages && git merge main --no-edit
+``` 
+to change branch and sync changes from main to be ready to deploy.
+4. Bundle application into `dist` with build command (`npx webpack` for now).
+5. Run each of these in order:
+```
+git add dist -f && git commit -m "Deployment commit"
+git subtree push --prefix dist origin gh-pages
+git checkout main
+```
+1. Recall that the **source branch** for GitHub Pages is set in your repository’s settings. Change that to `gh-pages branch`.
